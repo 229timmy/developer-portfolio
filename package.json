@@ -11,8 +11,8 @@
   "dependencies": {
     "@studio-freight/lenis": "latest",
     "gsap": "latest",
-    "sass": "latest",
-    "nodemailer": "latest"
+    "nodemailer": "^6.9.16",
+    "sass": "latest"
   },
   "devDependencies": {
     "vite": "latest"

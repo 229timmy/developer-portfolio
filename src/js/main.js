@@ -194,7 +194,12 @@ form.addEventListener('submit', async (e) => {
     const data = Object.fromEntries(formData);
 
     try {
-        const response = await fetch('/api/contact', {
+        // Use the deployed Vercel URL in production
+        const baseUrl = import.meta.env.PROD 
+            ? '' // Empty string for production (uses relative path)
+            : 'http://localhost:5173'; // Vite's default port for development
+        
+        const response = await fetch(`${baseUrl}/api/contact`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

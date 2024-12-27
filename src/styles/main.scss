@@ -219,8 +219,7 @@ body {
 }
 
 .work {
-    padding: 4rem 10%;
-    background-color: #f8f8f8;
+    padding: 6rem 2rem;
 
     .projects-grid {
         display: grid;
@@ -351,33 +350,86 @@ body {
     }
 
     .skills {
-        h3 {
+        margin-top: 4rem;
+
+        .skills-title {
             font-family: $font-secondary;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
             color: $text-dark;
         }
 
         .skills-grid {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            padding: 1rem;
         }
 
-        .skill {
-            .skill-name {
-                font-weight: 600;
+        .skill-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+
+            &:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background: $primary-blue;
+                transition: transform 0.3s ease;
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+
+            &:hover::before {
+                transform: scaleX(1);
+            }
+
+            .skill-icon {
+                width: 60px;
+                height: 60px;
+                margin: 0 auto 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background: rgba($primary-blue, 0.1);
                 color: $primary-blue;
-                display: block;
-                margin-bottom: 0.5rem;
+
+                i {
+                    font-size: 1.8rem;
+                }
+            }
+
+            h4 {
+                font-family: $font-secondary;
+                font-size: 1.4rem;
+                margin-bottom: 1.5rem;
+                color: $text-dark;
             }
 
             .skill-tags {
                 display: flex;
                 flex-wrap: wrap;
-                gap: 0.5rem;
+                gap: 0.8rem;
+                justify-content: center;
 
                 .tag {
-                    background-color: rgba($primary-yellow, 0.1);
+                    background: rgba(#ffbd00, 0.1);
                     color: $text-dark;
                     padding: 0.5rem 1rem;
                     border-radius: 20px;
@@ -385,11 +437,15 @@ body {
                     transition: all 0.3s ease;
 
                     &:hover {
-                        background-color: $primary-yellow;
+                        background: #ffbd00;
                         transform: translateY(-2px);
                     }
                 }
             }
+
+            &.frontend::before { background: #4CAF50; }
+            &.backend::before { background: #2196F3; }
+            &.tools::before { background: #9C27B0; }
         }
     }
 
@@ -426,7 +482,6 @@ body {
 
 .contact {
     padding: 8rem 10%;
-    background-color: #f8f8f8;
 
     .contact-container {
         display: grid;
@@ -691,5 +746,50 @@ body {
 
     &:focus {
         top: 0;
+    }
+}
+
+.bg-gray {
+    background-color: #eaebed;
+}
+
+.footer {
+    padding: 3rem 0;
+    background-color: #f8f8f8;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    .footer-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+
+        .footer-left {
+            p {
+                color: rgba($text-dark, 0.8);
+                font-size: 0.9rem;
+            }
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 2rem;
+
+            .footer-link {
+                color: $text-dark;
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: $primary-blue;
+                }
+            }
+        }
     }
 } 
