@@ -1,5 +1,5 @@
 {
-  "name": "folio2",
+  "name": "developer-portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -11,7 +11,8 @@
   "dependencies": {
     "@studio-freight/lenis": "latest",
     "gsap": "latest",
-    "sass": "latest"
+    "sass": "latest",
+    "nodemailer": "latest"
   },
   "devDependencies": {
     "vite": "latest"
