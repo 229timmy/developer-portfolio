@@ -1,15 +1,4 @@
-import express from 'express';
-import cors from 'cors';
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-const app = express();
-
-// Middleware
-app.use(cors());
-app.use(express.json());
 
 // Email transporter
 const transporter = nodemailer.createTransport({
@@ -20,12 +9,27 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Contact form endpoint
-app.post('/api/contact', async (req, res) => {
+export default async function handler(req, res) {
+    // Enable CORS
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+
+    // Handle OPTIONS request
+    if (req.method === 'OPTIONS') {
+        res.status(200).end();
+        return;
+    }
+
+    // Only allow POST
+    if (req.method !== 'POST') {
+        return res.status(405).json({ message: 'Method not allowed' });
+    }
+
     const { name, email, message } = req.body;
 
     try {
-        // Email options
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.RECIPIENT_EMAIL,
@@ -39,17 +43,10 @@ app.post('/api/contact', async (req, res) => {
             `
         };
 
-        // Send email
         await transporter.sendMail(mailOptions);
-
-        res.status(200).json({ message: 'Email sent successfully' });
+        return res.status(200).json({ message: 'Email sent successfully' });
     } catch (error) {
         console.error('Error sending email:', error);
-        res.status(500).json({ message: 'Error sending email' });
+        return res.status(500).json({ message: 'Error sending email' });
     }
-});
-
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-}); 
+}
