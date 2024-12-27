@@ -194,7 +194,9 @@ form.addEventListener('submit', async (e) => {
     const data = Object.fromEntries(formData);
 
     try {
-        const response = await fetch('http://localhost:3001/api/contact', {
+        const API_URL = 'https://your-backend-url.com'; // We'll update this once backend is deployed
+
+        const response = await fetch(`${API_URL}/api/contact`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
