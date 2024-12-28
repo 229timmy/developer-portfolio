@@ -183,58 +183,52 @@ gsap.from('.contact-form', {
 
 // Form submission handling
 const form = document.getElementById('contact-form');
+const successMessage = document.querySelector('.message-success');
+const successContent = document.querySelector('.success-content');
+
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
     const submitBtn = form.querySelector('.submit-btn');
-    submitBtn.setAttribute('aria-label', 'Sending message...');
     submitBtn.disabled = true;
-    
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
 
     try {
-        // Use the deployed Vercel URL in production
-        const baseUrl = import.meta.env.PROD 
-            ? '' // Empty string for production (uses relative path)
-            : 'http://localhost:5173'; // Vite's default port for development
-        
-        const response = await fetch(`${baseUrl}/api/contact`, {
+        const formData = new FormData(form);
+        const response = await fetch('https://formspree.io/f/xnnndldp', {
             method: 'POST',
+            body: formData,
             headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
+                'Accept': 'application/json'
+            }
         });
 
-        if (!response.ok) {
+        if (response.ok) {
+            // Show success message
+            successMessage.style.display = 'flex';
+            setTimeout(() => {
+                successMessage.classList.add('active');
+                successContent.classList.add('active');
+            }, 100);
+
+            // Reset form
+            form.reset();
+
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('active');
+                successContent.classList.remove('active');
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 300);
+            }, 3000);
+        } else {
             throw new Error('Network response was not ok');
         }
-
-        // Success
-        submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
-        submitBtn.setAttribute('aria-label', 'Message sent!');
-        form.reset();
-
-        // Reset button after 3 seconds
-        setTimeout(() => {
-            submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-            submitBtn.setAttribute('aria-label', 'Send message');
-            submitBtn.disabled = false;
-        }, 3000);
-
     } catch (error) {
         console.error('Error:', error);
-        submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
-        submitBtn.setAttribute('aria-label', 'Error sending message');
-        
-        // Reset button after 3 seconds
-        setTimeout(() => {
-            submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-            submitBtn.setAttribute('aria-label', 'Send message');
-            submitBtn.disabled = false;
-        }, 3000);
+        alert('Error sending message. Please try again.');
     }
+
+    submitBtn.disabled = false;
 });
 
 // Hamburger menu functionality
