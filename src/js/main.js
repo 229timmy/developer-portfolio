@@ -292,4 +292,42 @@ scrollTopBtn.addEventListener('click', () => {
         top: 0,
         behavior: 'smooth'
     });
-}); 
+});
+
+// Theme toggle functionality
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Set initial dark theme
+body.classList.add('dark-theme');
+themeToggle.checked = false;
+
+themeToggle.addEventListener('change', function() {
+    if (this.checked) {
+        body.classList.remove('dark-theme');
+        body.classList.add('light-theme');
+        document.documentElement.style.setProperty('--bg-primary', '#f8f9fa');
+        document.documentElement.style.setProperty('--bg-secondary', '#ffffff');
+        document.documentElement.style.setProperty('--text-color', '#1a1a1a');
+        document.documentElement.style.setProperty('--accent-color', '#d5573b');
+        document.documentElement.style.setProperty('--highlight-color', '#d5573b');
+    } else {
+        body.classList.remove('light-theme');
+        body.classList.add('dark-theme');
+        document.documentElement.style.setProperty('--bg-primary', '#11151c');
+        document.documentElement.style.setProperty('--bg-secondary', '#373f51');
+        document.documentElement.style.setProperty('--text-color', '#cfd7c7');
+        document.documentElement.style.setProperty('--accent-color', '#4a8fe7');
+        document.documentElement.style.setProperty('--highlight-color', '#d5573b');
+    }
+});
+
+// Ensure page starts at top when loaded or refreshed
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+};
+
+// Alternative method for some browsers
+history.scrollRestoration = 'manual';
+
+// Rest of your JavaScript code... 

@@ -1,8 +1,14 @@
-// Colors
-$primary-blue: #1153fa;
-$primary-yellow: #d4b800;
-$background: #ffffff;
-$text-dark: #1a1a1a;
+// Theme colors
+$dark-bg-primary: #11151c;
+$dark-bg-secondary: #373f51;
+$dark-accent: #4a8fe7;
+$dark-text: #cfd7c7;
+$highlight: #d5573b;
+
+// Light theme colors
+$light-bg-primary: #f8f9fa;
+$light-bg-secondary: #ffffff;
+$light-text: #1a1a1a;
 
 // Typography
 $font-primary: 'Inter', sans-serif;
@@ -12,6 +18,24 @@ $font-secondary: 'Space Grotesk', sans-serif;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
 
-// Add these for form validation
+// Form validation
 $error-color: #dc3545;
-$success-color: #28a745; 
+$success-color: #28a745;
+
+body.dark-theme {
+    --bg-primary: #{$dark-bg-primary};
+    --bg-secondary: #{$dark-bg-secondary};
+    --text-color: #{$dark-text};
+    --accent-color: #{$dark-accent};
+    --highlight-color: #{$highlight};
+    --logo-filter: 1;
+}
+
+body.light-theme {
+    --bg-primary: #{$light-bg-primary};
+    --bg-secondary: #{$light-bg-secondary};
+    --text-color: #{$light-text};
+    --accent-color: #{$dark-accent};
+    --highlight-color: #{$highlight};
+    --logo-filter: 0;
+} 
