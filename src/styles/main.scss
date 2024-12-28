@@ -942,4 +942,67 @@ body {
     .social-link i {
         color: $highlight;
     }
+}
+
+.message-success {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($dark-bg-primary, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .success-content {
+        text-align: center;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.5s ease;
+
+        &.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .checkmark {
+            font-size: 4rem;
+            color: $highlight;
+            margin-bottom: 1rem;
+            animation: bounce 1s ease;
+        }
+
+        h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: $dark-text;
+            font-size: 1.1rem;
+        }
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
 } 
