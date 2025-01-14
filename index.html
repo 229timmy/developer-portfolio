@@ -21,16 +21,24 @@
         }
         
         /* Initial styles */
-        body { 
+        html, body {
             margin: 0;
-            opacity: 1;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #11151c;
         }
+        
+        body {
+            visibility: hidden;
+        }
+        
         .skip-link { 
             position: absolute;
             left: -9999px;
             z-index: 999;
             opacity: 0;
         }
+        
         .loader {
             position: fixed;
             top: 0;
@@ -42,13 +50,16 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            visibility: visible;
         }
+        
         .loader-text {
             color: white;
             font-family: 'TheFont', system-ui, -apple-system, sans-serif;
             font-size: clamp(5vw, 10vw, 25vh);
             animation: letter-breathe 3s ease-in-out infinite;
         }
+        
         @keyframes letter-breathe {
             from, to {
                 font-variation-settings: 'wght' 100;
@@ -56,10 +67,6 @@
             50% {
                 font-variation-settings: 'wght' 900;
             }
-        }
-        #main {
-            opacity: 1;
-            visibility: visible;
         }
     </style>
 </head>

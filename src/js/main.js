@@ -8,24 +8,30 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// Show body after styles are loaded
-document.body.style.opacity = 1;
+// Wait for styles and content to load
+document.addEventListener('DOMContentLoaded', () => {
+    // Hide content initially
+    document.body.style.visibility = 'hidden';
+    
+    // Initialize smooth scroll
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+    });
 
-// Initialize smooth scroll
-const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-});
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
 
-function raf(time) {
-    lenis.raf(time);
     requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);
+});
 
 // Loading animation
 window.addEventListener('load', () => {
+    // Show content once everything is loaded
+    document.body.style.visibility = 'visible';
+    
     const loader = document.querySelector('.loader');
     const heroLines = document.querySelectorAll('.hero-title .line');
     
