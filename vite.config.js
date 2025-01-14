@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
-  base: '/',
+  base: './',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -28,6 +28,16 @@ export default defineConfig({
     port: 3000
   },
   css: {
-    devSourcemap: true
+    devSourcemap: true,
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/styles/_variables.scss";`
+      }
+    }
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src')
+    }
   }
 }); 

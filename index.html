@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timothy Embden | Portfolio</title>
-    <link rel="stylesheet" href="/src/styles/main.scss">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta name="description" content="Timothy Embden - Web Developer Portfolio. Specializing in creating beautiful, functional web applications.">
     <meta name="keywords" content="web developer, frontend developer, JavaScript, React, portfolio">
     <meta property="og:title" content="Timothy Embden | Web Developer">
     <meta property="og:description" content="Web Developer specializing in modern web applications">
-    <meta property="og:image" content="/src/assets/te-logo-favicon.png">
-    <link rel="icon" type="image/png" href="/src/assets/te-logo-favicon.png">
-    <script type="module" src="/src/js/main.js"></script>
+    <meta property="og:image" content="./src/assets/te-logo-favicon.png">
+    <link rel="icon" type="image/png" href="./src/assets/te-logo-favicon.png">
+    <style>
+        /* Add a basic loading style to prevent FOUC */
+        body { opacity: 0; }
+    </style>
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -23,7 +25,7 @@
 
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="logo" role="banner">
-            <img src="/src/assets/te-logo-favicon.png" alt="Timothy Embden" class="nav-logo">
+            <img src="./src/assets/te-logo-favicon.png" alt="Timothy Embden" class="nav-logo">
         </div>
         <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
             <span></span>
@@ -53,7 +55,7 @@
             <div class="projects-grid" role="list">
                 <article class="project" role="listitem">
                     <div class="project-image" aria-hidden="true">
-                        <img src="src/assets/Screen Shot 2024-12-31 at 2.41.11 AM.png" alt="StashCat Dashboard Screenshot">
+                        <img src="./src/assets/Screen Shot 2024-12-31 at 2.41.11 AM.png" alt="StashCat Dashboard Screenshot">
                     </div>
                     <div class="project-content">
                         <h3 id="project-stashcat-title">StashCat</h3>
@@ -87,7 +89,7 @@
                 </article>
                 <article class="project" role="listitem">
                     <div class="project-image" aria-hidden="true">
-                        <img src="src/assets/Screen Shot 2024-12-28 at 1.30.04 AM.png" alt="Want Nostalgia Website Screenshot">
+                        <img src="./src/assets/Screen Shot 2024-12-28 at 1.30.04 AM.png" alt="Want Nostalgia Website Screenshot">
                     </div>
                     <div class="project-content">
                         <h3 id="project-2-title">Want Nostalgia</h3>
@@ -325,5 +327,6 @@
             <p>Thanks for reaching out. I'll get back to you soon.</p>
         </div>
     </div>
+    <script type="module" src="/src/js/main.js"></script>
 </body>
 </html> 

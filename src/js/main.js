@@ -1,9 +1,15 @@
+// Import styles
+import '../styles/main.scss';
+
 import Lenis from '@studio-freight/lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
+
+// Show body after styles are loaded
+document.body.style.opacity = 1;
 
 // Initialize smooth scroll
 const lenis = new Lenis({
