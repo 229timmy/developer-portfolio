@@ -14,6 +14,16 @@
     <style>
         /* Add a basic loading style to prevent FOUC */
         body { opacity: 0; }
+        .skip-link { 
+            position: absolute;
+            left: -9999px;
+            z-index: 999;
+            opacity: 0;
+        }
+        .loader {
+            display: none;
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
