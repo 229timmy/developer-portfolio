@@ -22,7 +22,7 @@ $breakpoint-desktop: 1024px;
 $error-color: #dc3545;
 $success-color: #28a745;
 
-body.dark-theme {
+:root {
     --bg-primary: #{$dark-bg-primary};
     --bg-secondary: #{$dark-bg-secondary};
     --text-color: #{$dark-text};
@@ -31,7 +31,7 @@ body.dark-theme {
     --logo-filter: 1;
 }
 
-body.light-theme {
+[data-theme="light"] {
     --bg-primary: #{$light-bg-primary};
     --bg-secondary: #{$light-bg-secondary};
     --text-color: #{$light-text};
