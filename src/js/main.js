@@ -8,6 +8,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+// Import resume PDF
+import resumePDF from '../assets/timothy resume.pdf';
+
+// Set up resume link
+document.getElementById('resume-link').href = resumePDF;
+
 // Wait for styles and content to load
 document.addEventListener('DOMContentLoaded', () => {
     // Hide content initially
