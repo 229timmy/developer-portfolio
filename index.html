@@ -12,8 +12,12 @@
     <meta property="og:image" content="./src/assets/te-logo-favicon.png">
     <link rel="icon" type="image/png" href="./src/assets/te-logo-favicon.png">
     <style>
-        /* Add a basic loading style to prevent FOUC */
-        body { opacity: 0; }
+        /* Initial styles */
+        body { 
+            opacity: 0;
+            margin: 0;
+            overflow: hidden;
+        }
         .skip-link { 
             position: absolute;
             left: -9999px;
@@ -21,8 +25,21 @@
             opacity: 0;
         }
         .loader {
-            display: none;
-            opacity: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #4a8fe7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .loader-text {
+            color: white;
+            font-size: 5vw;
+            font-family: system-ui, -apple-system, sans-serif;
         }
     </style>
 </head>
@@ -331,6 +348,6 @@
             <p>Thanks for reaching out. I'll get back to you soon.</p>
         </div>
     </div>
-    <script type="module" src="src/js/main.js"></script>
+    <script type="module" src="./src/js/main.js"></script>
 </body>
 </html> 
