@@ -11,12 +11,19 @@
     <meta property="og:description" content="Web Developer specializing in modern web applications">
     <meta property="og:image" content="./src/assets/te-logo-favicon.png">
     <link rel="icon" type="image/png" href="./src/assets/te-logo-favicon.png">
+    <link rel="preload" as="font" href="https://garet.typeforward.com/assets/fonts/shared/TFMixVF.woff2" type="font/woff2" crossorigin>
     <style>
+        @font-face {
+            font-family: 'TheFont';
+            src: url('https://garet.typeforward.com/assets/fonts/shared/TFMixVF.woff2') format('woff2');
+            font-weight: 100 900;
+            font-display: block;
+        }
+        
         /* Initial styles */
         body { 
-            opacity: 0;
             margin: 0;
-            overflow: hidden;
+            opacity: 1;
         }
         .skip-link { 
             position: absolute;
@@ -38,8 +45,21 @@
         }
         .loader-text {
             color: white;
-            font-size: 5vw;
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: 'TheFont', system-ui, -apple-system, sans-serif;
+            font-size: clamp(5vw, 10vw, 25vh);
+            animation: letter-breathe 3s ease-in-out infinite;
+        }
+        @keyframes letter-breathe {
+            from, to {
+                font-variation-settings: 'wght' 100;
+            }
+            50% {
+                font-variation-settings: 'wght' 900;
+            }
+        }
+        #main {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>

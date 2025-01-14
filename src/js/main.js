@@ -29,7 +29,12 @@ window.addEventListener('load', () => {
     const loader = document.querySelector('.loader');
     const heroLines = document.querySelectorAll('.hero-title .line');
     
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+        onComplete: () => {
+            document.body.style.overflow = 'auto';
+            loader.style.display = 'none';
+        }
+    });
     
     tl.to('.loader-text', {
         duration: 1.2,
